@@ -1,21 +1,56 @@
 package net.zaczek.launcherforblind;
 
+import java.util.HashMap;
+
 import android.app.Activity;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.TextToSpeech.OnInitListener;
+import android.speech.tts.TextToSpeech.OnUtteranceCompletedListener;
 import android.support.v4.view.GestureDetectorCompat;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 
-public class AbstractListActivity extends Activity {
+public class AbstractListActivity extends Activity implements OnInitListener {
 	private static final String TAG = "lstactivity";
 	private GestureDetectorCompat mDetector;
+	private TextToSpeech tts;
+	private HashMap<String, String> ttsParams = new HashMap<String, String>();
+	private boolean ttsInitialized = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		mDetector = new GestureDetectorCompat(this, new MyGestureListener());
+		
+		ttsParams.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "next");
+
+		tts = new TextToSpeech(this, this);
+		tts.setOnUtteranceCompletedListener(new OnUtteranceCompletedListener() {
+			@Override
+			public void onUtteranceCompleted(String utteranceId) {
+			}
+		});
+	}
+	
+	protected void say(CharSequence something) {
+		if (ttsInitialized && !TextUtils.isEmpty(something)) {
+			tts.speak(something.toString(), TextToSpeech.QUEUE_FLUSH, ttsParams);
+		}
+	}
+	
+	@Override
+	public void onInit(int status) {
+		if (status == TextToSpeech.SUCCESS) {
+			// tts.setLanguage(Locale.GERMAN);
+			ttsInitialized = true;
+			say(getText(R.string.app_name));
+		} else {
+			Log.e(TAG, "Initilization Failed");
+		}
 	}
 
 	protected void onSwipeDown() {
