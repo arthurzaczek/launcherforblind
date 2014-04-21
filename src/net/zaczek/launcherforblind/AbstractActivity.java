@@ -13,7 +13,11 @@ import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 
-public class AbstractListActivity extends Activity implements OnInitListener {
+/* 
+ * Abstract activity for handling touch events and tts
+ * */
+public abstract class AbstractActivity extends Activity implements
+		OnInitListener {
 	private static final String TAG = "lstactivity";
 	private GestureDetectorCompat mDetector;
 	private TextToSpeech tts;
@@ -25,9 +29,15 @@ public class AbstractListActivity extends Activity implements OnInitListener {
 		super.onCreate(savedInstanceState);
 
 		mDetector = new GestureDetectorCompat(this, new MyGestureListener());
-		
-		ttsParams.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "next");
 
+		ttsParams.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "next");
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		destroyTTS();
 		tts = new TextToSpeech(this, this);
 		tts.setOnUtteranceCompletedListener(new OnUtteranceCompletedListener() {
 			@Override
@@ -36,18 +46,47 @@ public class AbstractListActivity extends Activity implements OnInitListener {
 		});
 	}
 	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		destroyTTS();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		destroyTTS();
+	}
+
+	private void destroyTTS() {
+		if (tts != null) {
+			tts.stop();
+			tts.shutdown();
+			tts = null;
+		}
+		ttsInitialized = false;
+	}
+
+	private CharSequence cachedSaying;
+
 	protected void say(CharSequence something) {
-		if (ttsInitialized && !TextUtils.isEmpty(something)) {
+		if (TextUtils.isEmpty(something))
+			return;
+
+		if (ttsInitialized) {
+			Log.d(TAG, "Saying: " + something);
 			tts.speak(something.toString(), TextToSpeech.QUEUE_FLUSH, ttsParams);
+		} else {
+			cachedSaying = something;
 		}
 	}
-	
+
 	@Override
 	public void onInit(int status) {
 		if (status == TextToSpeech.SUCCESS) {
 			// tts.setLanguage(Locale.GERMAN);
 			ttsInitialized = true;
-			say(getText(R.string.app_name));
+			say(cachedSaying);
 		} else {
 			Log.e(TAG, "Initilization Failed");
 		}
@@ -69,22 +108,22 @@ public class AbstractListActivity extends Activity implements OnInitListener {
 		Log.d(TAG, "onSwipeLeft");
 	}
 
-	private void onScrollUp() {
+	protected void onScrollUp() {
 		Log.d(TAG, "onScrollUp");
 	}
 
-	private void onScrollDown() {
+	protected void onScrollDown() {
 		Log.d(TAG, "onScrollDown");
 	}
 
-	private void onScrollLeft() {
+	protected void onScrollLeft() {
 		Log.d(TAG, "onScrollLeft");
 	}
 
-	private void onScrollRight() {
+	protected void onScrollRight() {
 		Log.d(TAG, "onScrollRight");
 	}
-	
+
 	protected void onTap() {
 		Log.d(TAG, "onTap");
 	}
@@ -157,18 +196,18 @@ public class AbstractListActivity extends Activity implements OnInitListener {
 
 		@Override
 		public boolean onDoubleTap(MotionEvent e) {
-			AbstractListActivity.this.onDoubleTap();
+			AbstractActivity.this.onDoubleTap();
 			return true;
 		}
 
 		@Override
 		public void onLongPress(MotionEvent e) {
-			AbstractListActivity.this.onLongPress();
+			AbstractActivity.this.onLongPress();
 		}
 
 		@Override
 		public boolean onSingleTapConfirmed(MotionEvent e) {
-			AbstractListActivity.this.onTap();
+			AbstractActivity.this.onTap();
 			return true;
 		}
 
@@ -178,16 +217,16 @@ public class AbstractListActivity extends Activity implements OnInitListener {
 			try {
 				if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE
 						&& Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-					AbstractListActivity.this.onSwipeLeft();
+					AbstractActivity.this.onSwipeLeft();
 				} else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE
 						&& Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-					AbstractListActivity.this.onSwipeRight();
+					AbstractActivity.this.onSwipeRight();
 				} else if (e1.getY() - e2.getY() > SWIPE_MIN_DISTANCE
 						&& Math.abs(velocityY) > SWIPE_THRESHOLD_VELOCITY) {
-					AbstractListActivity.this.onSwipeUp();
+					AbstractActivity.this.onSwipeUp();
 				} else if (e2.getY() - e1.getY() > SWIPE_MIN_DISTANCE
 						&& Math.abs(velocityY) > SWIPE_THRESHOLD_VELOCITY) {
-					AbstractListActivity.this.onSwipeDown();
+					AbstractActivity.this.onSwipeDown();
 				}
 			} catch (Exception e) {
 				// nothing
