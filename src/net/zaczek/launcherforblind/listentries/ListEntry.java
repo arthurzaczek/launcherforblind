@@ -1,4 +1,4 @@
-package net.zaczek.launcherforblind;
+package net.zaczek.launcherforblind.listentries;
 
 public interface ListEntry {
 	String getLabel();

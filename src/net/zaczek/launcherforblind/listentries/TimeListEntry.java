@@ -1,4 +1,4 @@
-package net.zaczek.launcherforblind;
+package net.zaczek.launcherforblind.listentries;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

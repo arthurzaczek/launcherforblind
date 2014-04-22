@@ -1,5 +1,6 @@
-package net.zaczek.launcherforblind;
+package net.zaczek.launcherforblind.activitysupport;
 
+import net.zaczek.launcherforblind.listentries.ListEntry;
 import android.util.Log;
 
 /*

@@ -1,4 +1,5 @@
-package net.zaczek.launcherforblind;
+package net.zaczek.launcherforblind.listentries;
+
 
 public abstract class AbstractListEntry implements ListEntry {
 	private final String mLabel;
