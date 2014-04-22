@@ -1,0 +1,14 @@
+<resources>
+
+    <string name="app_name">Start Schirm für Blinde Menschen</string>
+ 	<string name="phonebook">Telephon Buch</string>
+ 	<string name="missedcalls">Verpasste Anrufe</string>
+    <string name="sms">SMS</string>
+    <string name="currenttime">Uhrzeit</string>
+    
+    <string name="home">Daheim</string>
+    <string name="cell">Mobil</string>
+    <string name="work">Arbeit</string>
+    <string name="other">Andere</string>
+ 	
+</resources>

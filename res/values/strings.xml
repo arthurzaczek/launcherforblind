@@ -1,5 +1,14 @@
 <resources>
 
     <string name="app_name">Launcher for Blind People</string>
+    <string name="phonebook">Phone book</string>
+    <string name="missedcalls">missed calls</string>
+    <string name="sms">messages</string>
+    <string name="currenttime">current time</string>
+        
+    <string name="home">home</string>
+    <string name="cell">cell</string>
+    <string name="work">work</string>
+    <string name="other">other</string>
 
 </resources>
