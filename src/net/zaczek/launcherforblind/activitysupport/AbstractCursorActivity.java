@@ -18,7 +18,6 @@ public abstract class AbstractCursorActivity extends AbstractActivity {
 	protected void onResume() {
 		super.onResume();
 
-		closeCursor();
 		mCursor = getCursor();
 		if (mCursor != null && mCursor.moveToFirst()) {
 			select();
@@ -28,15 +27,6 @@ public abstract class AbstractCursorActivity extends AbstractActivity {
 	@Override
 	protected void onPause() {
 		super.onPause();
-
-		closeCursor();
-	}
-
-	private void closeCursor() {
-		if (mCursor != null) {
-			mCursor.close();
-			mCursor = null;
-		}
 	}
 
 	private void select() {
