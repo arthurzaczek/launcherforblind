@@ -26,10 +26,10 @@ public class MainActivity extends AbstractArrayActivity {
 	@Override
 	protected ListEntry[] getList() {
 		return new ListEntry[] { new StaticListEntry("Start Schirm"),
-				new NavigatorListEntry("Telefonbuch", null),
-				new NavigatorListEntry("Verpasste Anrufe", null),
-				new NavigatorListEntry("SMS", null),
-				new TimeListEntry("Uhrzeit"),
+				new NavigatorListEntry(getString(R.string.phonebook), this, PhoneBookActivity.class),
+				new NavigatorListEntry(getString(R.string.missedcalls), this, null),
+				new NavigatorListEntry(getString(R.string.sms), this, null),
+				new TimeListEntry(getString(R.string.currenttime)),
 				};
 	}
 
