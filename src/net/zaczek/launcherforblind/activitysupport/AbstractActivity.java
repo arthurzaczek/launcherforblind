@@ -3,7 +3,9 @@ package net.zaczek.launcherforblind.activitysupport;
 import java.util.HashMap;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import android.speech.tts.TextToSpeech.OnUtteranceCompletedListener;
@@ -23,16 +25,19 @@ public abstract class AbstractActivity extends Activity implements
 	private TextToSpeech tts;
 	private HashMap<String, String> ttsParams = new HashMap<String, String>();
 	private boolean ttsInitialized = false;
+	private Vibrator mVibe;
+	private static final long[] PATTERN = { 0, 50 };
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		mDetector = new GestureDetectorCompat(this, new MyGestureListener());
+		mVibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
 		ttsParams.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "next");
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -45,7 +50,7 @@ public abstract class AbstractActivity extends Activity implements
 			}
 		});
 	}
-	
+
 	@Override
 	protected void onPause() {
 		super.onPause();
@@ -79,6 +84,10 @@ public abstract class AbstractActivity extends Activity implements
 		} else {
 			cachedSaying = something;
 		}
+	}
+
+	protected void vibe() {
+		mVibe.vibrate(PATTERN, -1);
 	}
 
 	@Override

@@ -33,6 +33,8 @@ public abstract class AbstractCursorActivity extends AbstractActivity {
 		final ListEntry entry = getListEntry(mCursor);
 		final String label = entry.getLabel();
 		Log.i(TAG, "Selecting " + label);
+		
+		vibe();
 		giveFeedback(label);
 		say(label);
 	}

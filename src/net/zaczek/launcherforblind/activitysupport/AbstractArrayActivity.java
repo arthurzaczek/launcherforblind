@@ -33,6 +33,8 @@ public abstract class AbstractArrayActivity extends AbstractActivity {
 		final ListEntry entry = mList[mIndex];
 		final String label = entry.getLabel();
 		Log.i(TAG, "Selecting " + label);
+
+		vibe();
 		giveFeedback(label);
 		say(label);
 	}
