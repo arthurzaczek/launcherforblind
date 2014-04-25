@@ -43,6 +43,8 @@ public class DialerActivity extends AbstractActivity {
 		super.onCreate(savedInstanceState);
 		Log.i(TAG, "onCreate");
 		setContentView(R.layout.dialer);
+		
+		say(getString(R.string.dialer));
 
 		dialedNumber = "";
 

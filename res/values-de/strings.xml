@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">Start Schirm für Blinde Menschen</string>
-    <string name="phonebook">Telephon Buch</string>
+    <string name="phonebook">Telefon Buch</string>
     <string name="dialer">Wählscheibe</string>
     <string name="missedcalls">Verpasste Anrufe</string>
     <string name="sms">SMS</string>
@@ -16,5 +16,7 @@
     <string name="invalid_number">ungültige nummer</string>
     <string name="you_are_about_to_dial">Sie wählen gerade</string>
     <string name="not_implemented_yet">noch nicht implementiert</string>
-
+    <string name="main_help">Bewegen Sie den Finger über den Bildschrim hinauf oder hinunter um einen Eintrag zu wählen. Doppeltes Tippen wählt den aktuellen Eintrag aus.</string>
+    <string name="phonebook_help">Bewegen Sie den Finger über den Bildschrim hinauf oder hinunter um einen Eintrag zu wählen. Doppeltes Tippen wählt den aktuellen Eintrag aus.</string>
+    
 </resources>
