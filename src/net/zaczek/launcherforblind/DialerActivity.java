@@ -31,7 +31,7 @@ public class DialerActivity extends AbstractActivity {
 	private String currentValue;
 	private String dialedNumber;
 
-	private boolean confirmed;
+	private boolean confirmed = false;
 	boolean screenIsBeingTouched = false;
 	boolean screenVisible = true;
 

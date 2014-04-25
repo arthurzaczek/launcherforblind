@@ -11,10 +11,12 @@ import android.widget.TextView;
 
 public class PhoneBookActivity extends AbstractCursorActivity {
 	private static final String TAG = "launcherforblind";
-	
+
 	private static final String[] PROJECTION = new String[] {
 			Phone.DISPLAY_NAME, Phone.RAW_CONTACT_ID, Phone.NUMBER, Phone.TYPE };
 
+	private boolean confirmed = false;
+	private String currentSelected = "";
 	private TextView txtMain;
 
 	@Override
@@ -36,22 +38,39 @@ public class PhoneBookActivity extends AbstractCursorActivity {
 	@Override
 	protected ListEntry getListEntry(Cursor c) {
 		int phoneType = Integer.parseInt(c.getString(3));
-        String type = "";
-        if (phoneType == Phone.TYPE_HOME) {
-            type = getString(R.string.home);
-        } else if (phoneType == Phone.TYPE_MOBILE) {
-            type = getString(R.string.cell);
-        } else if (phoneType == Phone.TYPE_WORK) {
-            type = getString(R.string.work);
-        } else {
-        	type = getString(R.string.other);
-        }
+		String type = "";
+		if (phoneType == Phone.TYPE_HOME) {
+			type = getString(R.string.home);
+		} else if (phoneType == Phone.TYPE_MOBILE) {
+			type = getString(R.string.cell);
+		} else if (phoneType == Phone.TYPE_WORK) {
+			type = getString(R.string.work);
+		} else {
+			type = getString(R.string.other);
+		}
 
-        return new ContactListEntry(c.getString(0), c.getInt(1), type);
+		return new ContactListEntry(c.getString(0), c.getInt(1), type);
 	}
 
 	@Override
 	protected void giveFeedback(String label) {
 		txtMain.setText(label);
+		confirmed = false;
+		currentSelected = label;
+	}
+
+	@Override
+	protected void onDoubleTap() {
+		super.onDoubleTap();
+		if (!confirmed) {
+			StringBuilder sb = new StringBuilder();
+			sb.append(getString(R.string.you_are_about_to_dial));
+			sb.append(" " + currentSelected);
+			say(sb.toString());
+			confirmed = true;
+		} else {
+			// actually dial
+			say(getString(R.string.not_implemented_yet));
+		}
 	}
 }
