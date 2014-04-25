@@ -24,8 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PhoneBookActivity" >
-        </activity>
-    </application>
+        <activity android:name=".PhoneBookActivity" />
+        <activity android:name=".DialerActivity" />
+        </application>
 
 </manifest>

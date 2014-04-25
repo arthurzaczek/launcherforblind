@@ -27,6 +27,7 @@ public class MainActivity extends AbstractArrayActivity {
 	protected ListEntry[] getList() {
 		return new ListEntry[] { new StaticListEntry("Start Schirm"),
 				new NavigatorListEntry(getString(R.string.phonebook), this, PhoneBookActivity.class),
+				new NavigatorListEntry(getString(R.string.dialer), this, DialerActivity.class),
 				new NavigatorListEntry(getString(R.string.missedcalls), this, null),
 				new NavigatorListEntry(getString(R.string.sms), this, null),
 				new TimeListEntry(getString(R.string.currenttime)),

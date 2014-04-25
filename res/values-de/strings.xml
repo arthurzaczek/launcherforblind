@@ -1,14 +1,20 @@
 <resources>
 
     <string name="app_name">Start Schirm für Blinde Menschen</string>
- 	<string name="phonebook">Telephon Buch</string>
- 	<string name="missedcalls">Verpasste Anrufe</string>
+    <string name="phonebook">Telephon Buch</string>
+    <string name="dialer">Wählscheibe</string>
+    <string name="missedcalls">Verpasste Anrufe</string>
     <string name="sms">SMS</string>
     <string name="currenttime">Uhrzeit</string>
-    
     <string name="home">Daheim</string>
     <string name="cell">Mobil</string>
     <string name="work">Arbeit</string>
     <string name="other">Andere</string>
- 	
+    <string name="deleted">gelöscht</string>
+    <string name="digit_help">Bewegen Sie den Finger über den Bildschrim so, wie wenn Sie auf einem Ziffernblock wären. 
+        Loslassen, um die Ziffer zu wählen, ganz nach links löscht die letzte Ziffer. Zwei mal ganz nach oben um zu wählen.</string>
+    <string name="invalid_number">ungültige nummer</string>
+    <string name="you_are_about_to_dial">Sie wählen gerade</string>
+    <string name="not_implemented_yet">noch nicht implementiert</string>
+
 </resources>

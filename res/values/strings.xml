@@ -2,13 +2,19 @@
 
     <string name="app_name">Launcher for Blind People</string>
     <string name="phonebook">Phone book</string>
+    <string name="dialer">Dialer</string>
     <string name="missedcalls">missed calls</string>
     <string name="sms">messages</string>
     <string name="currenttime">current time</string>
-        
     <string name="home">home</string>
     <string name="cell">cell</string>
     <string name="work">work</string>
     <string name="other">other</string>
+    <string name="deleted">deleted</string>
+    <string name="digit_help">Move the finger on the screen in the same way as you would try to reach number on a number pad. 
+        Release to select the number, move far to the left to delete the last digit. Move far up twice to dial.</string>
+    <string name="invalid_number">invalid number</string>
+    <string name="you_are_about_to_dial">you are about to dial</string>
+    <string name="not_implemented_yet">not implemented yet</string>
 
 </resources>
