@@ -17,17 +17,23 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
-        <activity android:name=".MainActivity" >
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.HOME" />
-                <category android:name="android.intent.category.DEFAULT" />                
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".PhoneBookActivity" />
-        <activity android:name=".DialerActivity" />
-        </application>
+        <activity
+            android:name=".PhoneBookActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DialerActivity"
+            android:screenOrientation="portrait" />
+    </application>
 
 </manifest>
