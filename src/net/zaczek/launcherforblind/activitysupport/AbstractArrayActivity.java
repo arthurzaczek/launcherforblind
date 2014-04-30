@@ -16,6 +16,14 @@ public abstract class AbstractArrayActivity extends AbstractActivity {
 
 	protected abstract void giveFeedback(String label);
 
+	protected ListEntry getCurrentListEntry() {
+		if (mList != null && mIndex >= 0 && mIndex < mList.length) {
+			return mList[mIndex];
+		} else {
+			return null;
+		}
+	}
+
 	@Override
 	protected void onResume() {
 		super.onResume();

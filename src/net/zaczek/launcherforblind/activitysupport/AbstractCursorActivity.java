@@ -7,12 +7,17 @@ import android.util.Log;
 public abstract class AbstractCursorActivity extends AbstractActivity {
 	private static final String TAG = "launcherforblind";
 	private Cursor mCursor;
+	private ListEntry mCurrent;
 
 	protected abstract Cursor getCursor();
 
 	protected abstract ListEntry getListEntry(Cursor c);
 
 	protected abstract void giveFeedback(String label);
+
+	protected ListEntry getCurrentListEntry() {
+		return mCurrent;
+	}
 
 	@Override
 	protected void onResume() {
@@ -30,19 +35,20 @@ public abstract class AbstractCursorActivity extends AbstractActivity {
 	}
 
 	private void select() {
-		final ListEntry entry = getListEntry(mCursor);
-		final String label = entry.getLabel();
+		mCurrent = getListEntry(mCursor);
+		final String label = mCurrent.getLabel();
 		Log.i(TAG, "Selecting " + label);
-		
+
 		vibe();
 		giveFeedback(label);
 		say(label);
 	}
 
 	private void execute() {
-		final ListEntry entry = getListEntry(mCursor);
-		say(entry.getTextToSay());
-		entry.onSelected();
+		if (mCurrent != null) {
+			say(mCurrent.getTextToSay());
+			mCurrent.onSelected();
+		}
 	}
 
 	@Override

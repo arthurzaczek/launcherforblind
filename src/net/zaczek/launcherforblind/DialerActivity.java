@@ -43,7 +43,7 @@ public class DialerActivity extends AbstractActivity {
 		super.onCreate(savedInstanceState);
 		Log.i(TAG, "onCreate");
 		setContentView(R.layout.dialer);
-		
+
 		say(getString(R.string.dialer));
 
 		dialedNumber = "";
@@ -168,7 +168,7 @@ public class DialerActivity extends AbstractActivity {
 			}
 		} else {
 			// actually dial
-			say(getString(R.string.not_implemented_yet));
+			Helper.dial(this, dialedNumber);			
 		}
 	}
 }

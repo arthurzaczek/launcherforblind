@@ -16,7 +16,6 @@ public class PhoneBookActivity extends AbstractCursorActivity {
 			Phone.DISPLAY_NAME, Phone.RAW_CONTACT_ID, Phone.NUMBER, Phone.TYPE };
 
 	private boolean confirmed = false;
-	private String currentSelected = "";
 	private TextView txtMain;
 
 	@Override
@@ -49,28 +48,30 @@ public class PhoneBookActivity extends AbstractCursorActivity {
 			type = getString(R.string.other);
 		}
 
-		return new ContactListEntry(c.getString(0), c.getInt(1), type);
+		return new ContactListEntry(c.getString(0), c.getInt(1), type, c.getString(2));
 	}
 
 	@Override
 	protected void giveFeedback(String label) {
 		txtMain.setText(label);
-		confirmed = false;
-		currentSelected = label;
+		confirmed = false;		
 	}
 
 	@Override
 	protected void onDoubleTap() {
 		super.onDoubleTap();
+		final ContactListEntry current = (ContactListEntry)getCurrentListEntry();
+		if(current == null) return;
+		
 		if (!confirmed) {
 			StringBuilder sb = new StringBuilder();
 			sb.append(getString(R.string.you_are_about_to_dial));
-			sb.append(" " + currentSelected);
+			sb.append(" " + current.getLabel());
 			say(sb.toString());
 			confirmed = true;
 		} else {
 			// actually dial
-			say(getString(R.string.not_implemented_yet));
+			Helper.dial(this, current.getNumber());			
 		}
 	}
 }
