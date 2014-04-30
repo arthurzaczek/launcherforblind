@@ -47,7 +47,8 @@ public abstract class AbstractActivity extends Activity implements
 		tts.setOnUtteranceCompletedListener(new OnUtteranceCompletedListener() {
 			@Override
 			public void onUtteranceCompleted(String utteranceId) {
-			}
+				onTTSCompleted();
+			}			
 		});
 	}
 
@@ -84,6 +85,10 @@ public abstract class AbstractActivity extends Activity implements
 		} else {
 			cachedSaying = something;
 		}
+	}
+	
+	protected void onTTSCompleted() {		
+		
 	}
 
 	protected void vibe() {
