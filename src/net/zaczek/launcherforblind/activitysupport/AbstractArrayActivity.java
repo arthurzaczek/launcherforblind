@@ -44,7 +44,7 @@ public abstract class AbstractArrayActivity extends AbstractActivity {
 
 		vibe();
 		giveFeedback(label);
-		say(label);
+		say(entry.getLabelToSay());
 	}
 
 	private void execute() {

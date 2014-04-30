@@ -7,10 +7,16 @@ import java.util.Locale;
 public class TimeListEntry extends AbstractListEntry {
 
 	final Calendar cal = Calendar.getInstance();
-	final SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM", Locale.getDefault());
+	final String mFormatStr;
 
-	public TimeListEntry(String label) {
+	public TimeListEntry(String label, String format) {
 		super(label);
+		mFormatStr = format;
+	}
+	
+	@Override
+	public String getLabelToSay() {
+		return super.getLabel() + ". " + getTextToSay();
 	}
 
 	@Override
@@ -19,13 +25,8 @@ public class TimeListEntry extends AbstractListEntry {
 
 	@Override
 	public String getTextToSay() {
-		final int day = cal.get(Calendar.DAY_OF_MONTH);
-		final String monthStr = monthFormat.format(cal.getTime());
-		final int hour = cal.get(Calendar.HOUR_OF_DAY);
-		final int minutes = cal.get(Calendar.MINUTE);
-
-		return "Es ist " + Integer.toString(hour) + " Uhr "
-				+ Integer.toString(minutes) + " am " + Integer.toString(day)
-				+ " " + monthStr;
+		final SimpleDateFormat sdf = new SimpleDateFormat(mFormatStr,
+				Locale.getDefault());
+		return sdf.format(cal.getTime());
 	}
 }

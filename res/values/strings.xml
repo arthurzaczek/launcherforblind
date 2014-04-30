@@ -16,6 +16,8 @@
     <string name="invalid_number">invalid number</string>
     <string name="you_are_about_to_dial">you are about to dial</string>
     <string name="not_implemented_yet">not implemented yet</string>
-	<string name="main_help">Move your finger on the screen up or down to select an item. Double tab to select the current item.</string>	<string name="phonebook_help">Move your finger on the screen up or down to select an item. Double tab to select the current item.</string>
-	
+    <string name="main_help">Move your finger on the screen up or down to select an item. Double tab to select the current item.</string>
+    <string name="phonebook_help">Move your finger on the screen up or down to select an item. Double tab to select the current item.</string>
+    <string name="time_format">\'It is \'HH:mm\' o\'\'clock on \'MMMM\' \'dd</string>
+
 </resources>

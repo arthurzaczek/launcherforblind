@@ -41,7 +41,7 @@ public abstract class AbstractCursorActivity extends AbstractActivity {
 
 		vibe();
 		giveFeedback(label);
-		say(label);
+		say(mCurrent.getLabelToSay());
 	}
 
 	private void execute() {
