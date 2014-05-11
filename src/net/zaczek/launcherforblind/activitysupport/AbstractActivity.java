@@ -75,7 +75,7 @@ public abstract class AbstractActivity extends Activity implements
 
 	private CharSequence cachedSaying;
 
-	protected void say(CharSequence something) {
+	public void say(CharSequence something) {
 		if (TextUtils.isEmpty(something))
 			return;
 

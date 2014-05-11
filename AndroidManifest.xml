@@ -34,6 +34,9 @@
         <activity
             android:name=".DialerActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".MissedCallsActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

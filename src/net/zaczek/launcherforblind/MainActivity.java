@@ -31,8 +31,8 @@ public class MainActivity extends AbstractArrayActivity {
 						PhoneBookActivity.class),
 				new NavigatorListEntry(getString(R.string.dialer), this,
 						DialerActivity.class),
-				// new NavigatorListEntry(getString(R.string.missedcalls), this,
-				// null),
+				new NavigatorListEntry(getString(R.string.missedcalls), this,
+						MissedCallsActivity.class),
 				// new NavigatorListEntry(getString(R.string.sms), this, null),
 				new TimeListEntry(getString(R.string.currenttime),
 						getString(R.string.time_format)), };

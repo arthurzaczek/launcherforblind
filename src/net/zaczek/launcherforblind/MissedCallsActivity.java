@@ -1,19 +1,21 @@
 package net.zaczek.launcherforblind;
 
 import net.zaczek.launcherforblind.activitysupport.AbstractCursorActivity;
-import net.zaczek.launcherforblind.listentries.ContactListEntry;
 import net.zaczek.launcherforblind.listentries.ListEntry;
+import net.zaczek.launcherforblind.listentries.MissedCallListEntry;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.provider.CallLog;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.widget.TextView;
 
-public class PhoneBookActivity extends AbstractCursorActivity {
+public class MissedCallsActivity extends AbstractCursorActivity {
 	private static final String TAG = "launcherforblind";
 
 	private static final String[] PROJECTION = new String[] {
-			Phone.DISPLAY_NAME, Phone.RAW_CONTACT_ID, Phone.NUMBER, Phone.TYPE };
+		CallLog.Calls.CACHED_NAME, CallLog.Calls.NUMBER, CallLog.Calls.DATE };
+	private static final String SELECTION =  CallLog.Calls.TYPE + " = " + CallLog.Calls.MISSED_TYPE;
 
 	private boolean confirmed = false;
 	private TextView txtMain;
@@ -22,33 +24,23 @@ public class PhoneBookActivity extends AbstractCursorActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Log.i(TAG, "onCreate");
-		setContentView(R.layout.phonebook);
+		setContentView(R.layout.missedcalls);
 
 		txtMain = (TextView) findViewById(R.id.txtMain);
 	}
 
 	@Override
 	protected Cursor getCursor() {
-		Cursor c = managedQuery(Phone.CONTENT_URI, PROJECTION, null, null,
-				Phone.DISPLAY_NAME + " ASC");
+		Cursor c = managedQuery(CallLog.Calls.CONTENT_URI, PROJECTION, SELECTION, null,
+				CallLog.Calls.DEFAULT_SORT_ORDER);
 		return c;
 	}
 
 	@Override
 	protected ListEntry getListEntry(Cursor c) {
-		int phoneType = Integer.parseInt(c.getString(3));
-		String type = "";
-		if (phoneType == Phone.TYPE_HOME) {
-			type = getString(R.string.home);
-		} else if (phoneType == Phone.TYPE_MOBILE) {
-			type = getString(R.string.cell);
-		} else if (phoneType == Phone.TYPE_WORK) {
-			type = getString(R.string.work);
-		} else {
-			type = getString(R.string.other);
-		}
-
-		return new ContactListEntry(c.getString(0), c.getInt(1), type, c.getString(2));
+		int time = c.getInt(2);
+		return new MissedCallListEntry(c.getString(0), c.getString(1), 
+				DateUtils.formatElapsedTime(time));
 	}
 
 	@Override
@@ -60,7 +52,7 @@ public class PhoneBookActivity extends AbstractCursorActivity {
 	@Override
 	protected void onDoubleTap() {
 		super.onDoubleTap();
-		final ContactListEntry current = (ContactListEntry)getCurrentListEntry();
+		final MissedCallListEntry current = (MissedCallListEntry)getCurrentListEntry();
 		if(current == null) return;
 		
 		if (!confirmed) {

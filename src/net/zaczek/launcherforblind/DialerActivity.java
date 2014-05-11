@@ -158,12 +158,11 @@ public class DialerActivity extends AbstractActivity {
 				// length.
 				say(getString(R.string.invalid_number));
 			} else {
-				StringBuilder sb = new StringBuilder();
-				sb.append(getString(R.string.you_are_about_to_dial));
+				StringBuilder sb = new StringBuilder();				
 				for (int i = 0; i < dialedNumber.length(); i++) {
 					sb.append(dialedNumber.charAt(i) + " ");
 				}
-				say(sb.toString());
+				Helper.confirmDial(this, sb.toString());
 				confirmed = true;
 			}
 		} else {
