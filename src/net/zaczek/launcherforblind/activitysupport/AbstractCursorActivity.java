@@ -44,7 +44,7 @@ public abstract class AbstractCursorActivity extends AbstractActivity {
 		say(mCurrent.getLabelToSay());
 	}
 
-	private void execute() {
+	protected void onExecute() {
 		if (mCurrent != null) {
 			say(mCurrent.getTextToSay());
 			mCurrent.onSelected();
@@ -81,6 +81,6 @@ public abstract class AbstractCursorActivity extends AbstractActivity {
 	protected void onDoubleTap() {
 		super.onDoubleTap();
 
-		execute();
+		onExecute();
 	}
 }

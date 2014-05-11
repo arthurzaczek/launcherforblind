@@ -47,7 +47,7 @@ public abstract class AbstractArrayActivity extends AbstractActivity {
 		say(entry.getLabelToSay());
 	}
 
-	private void execute() {
+	protected void onExecute() {
 		final ListEntry entry = mList[mIndex];
 		say(entry.getTextToSay());
 		entry.onSelected();
@@ -87,6 +87,6 @@ public abstract class AbstractArrayActivity extends AbstractActivity {
 	protected void onDoubleTap() {
 		super.onDoubleTap();
 
-		execute();
+		onExecute();
 	}
 }

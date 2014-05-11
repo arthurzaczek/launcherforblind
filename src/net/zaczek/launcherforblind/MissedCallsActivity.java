@@ -50,8 +50,8 @@ public class MissedCallsActivity extends AbstractCursorActivity {
 	}
 
 	@Override
-	protected void onDoubleTap() {
-		super.onDoubleTap();
+	protected void onExecute() {
+		super.onExecute();
 		final MissedCallListEntry current = (MissedCallListEntry)getCurrentListEntry();
 		if(current == null) return;
 		

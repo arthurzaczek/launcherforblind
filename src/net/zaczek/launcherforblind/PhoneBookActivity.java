@@ -58,8 +58,8 @@ public class PhoneBookActivity extends AbstractCursorActivity {
 	}
 
 	@Override
-	protected void onDoubleTap() {
-		super.onDoubleTap();
+	protected void onExecute() {
+		super.onExecute();
 		final ContactListEntry current = (ContactListEntry)getCurrentListEntry();
 		if(current == null) return;
 		
