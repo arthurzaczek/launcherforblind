@@ -37,6 +37,9 @@
         <activity
             android:name=".MissedCallsActivity"
             android:screenOrientation="portrait" />
-    </application>
+        <activity
+            android:name=".AppsActivity"
+            android:screenOrientation="portrait" />
+        </application>
 
 </manifest>

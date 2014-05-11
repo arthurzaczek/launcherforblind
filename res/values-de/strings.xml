@@ -5,6 +5,7 @@
     <string name="dialer">Wählscheibe</string>
     <string name="missedcalls">Verpasste Anrufe</string>
     <string name="sms">SMS</string>
+    <string name="apps">Anwendungen</string>
     <string name="currenttime">Uhrzeit</string>
     <string name="home">Daheim</string>
     <string name="cell">Mobil</string>
@@ -18,6 +19,6 @@
     <string name="not_implemented_yet">noch nicht implementiert</string>
     <string name="main_help">Bewegen Sie den Finger über den Bildschrim hinauf oder hinunter um einen Eintrag zu wählen. Doppeltes Tippen wählt den aktuellen Eintrag aus.</string>
     <string name="phonebook_help">Bewegen Sie den Finger über den Bildschrim hinauf oder hinunter um einen Eintrag zu wählen. Doppeltes Tippen wählt den aktuellen Eintrag aus.</string>
-    <string name="time_format">\'Es ist \'HH\' Uhr \'mm\' am \'dd\' \'MMMM</string>
+    <string name="time_format">\'Es ist \'HH\' Uhr \'mm\' am \'dd\' \'MMMM</string>    
 
 </resources>

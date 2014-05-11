@@ -5,6 +5,7 @@
     <string name="dialer">Dialer</string>
     <string name="missedcalls">missed calls</string>
     <string name="sms">messages</string>
+    <string name="apps">Applications</string>
     <string name="currenttime">current time</string>
     <string name="home">home</string>
     <string name="cell">cell</string>
