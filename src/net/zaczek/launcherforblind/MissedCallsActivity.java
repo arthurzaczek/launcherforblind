@@ -1,5 +1,7 @@
 package net.zaczek.launcherforblind;
 
+import java.util.Date;
+
 import net.zaczek.launcherforblind.activitysupport.AbstractCursorActivity;
 import net.zaczek.launcherforblind.listentries.ListEntry;
 import net.zaczek.launcherforblind.listentries.MissedCallListEntry;
@@ -38,9 +40,9 @@ public class MissedCallsActivity extends AbstractCursorActivity {
 
 	@Override
 	protected ListEntry getListEntry(Cursor c) {
-		int time = c.getInt(2);
+		long time = c.getLong(2);
 		return new MissedCallListEntry(c.getString(0), c.getString(1), 
-				DateUtils.formatElapsedTime(time));
+				DateUtils.formatDateTime(this, time, DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_TIME));
 	}
 
 	@Override
