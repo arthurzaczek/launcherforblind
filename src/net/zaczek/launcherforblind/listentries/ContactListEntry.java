@@ -10,15 +10,6 @@ public class ContactListEntry extends AbstractListEntry {
 		mNumber = number;
 	}
 
-	@Override
-	public String getTextToSay() {
-		return null;
-	}
-
-	@Override
-	public void onSelected() {
-	}
-
 	public String getNumber() {
 		return mNumber;
 	}

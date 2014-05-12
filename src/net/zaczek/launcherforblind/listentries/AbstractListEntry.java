@@ -1,6 +1,5 @@
 package net.zaczek.launcherforblind.listentries;
 
-
 public abstract class AbstractListEntry implements ListEntry {
 	private final String mLabel;
 
@@ -8,15 +7,19 @@ public abstract class AbstractListEntry implements ListEntry {
 		mLabel = label;
 	}
 
-	@Override
 	public String getLabel() {
 		return mLabel;
 	}
-	
+
 	public String getLabelToSay() {
 		return mLabel;
 	}
-	
-	@Override
-	public abstract void onSelected();
+
+	public void onSelected() {
+
+	}
+
+	public String getTextToSay() {
+		return null;
+	}
 }

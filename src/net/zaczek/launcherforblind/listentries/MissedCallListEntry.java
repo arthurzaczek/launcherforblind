@@ -15,16 +15,7 @@ public class MissedCallListEntry extends AbstractListEntry {
 		return getLabel() + ", " + mDate;
 	}
 
-	@Override
-	public void onSelected() {
-	}
-
 	public String getNumber() {
 		return mNumber;
-	}
-
-	@Override
-	public String getTextToSay() {		
-		return null;
 	}
 }

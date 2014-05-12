@@ -20,10 +20,6 @@ public class TimeListEntry extends AbstractListEntry {
 	}
 
 	@Override
-	public void onSelected() {
-	}
-
-	@Override
 	public String getTextToSay() {
 		final SimpleDateFormat sdf = new SimpleDateFormat(mFormatStr,
 				Locale.getDefault());

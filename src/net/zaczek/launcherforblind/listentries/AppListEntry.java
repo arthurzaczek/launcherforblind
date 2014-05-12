@@ -15,11 +15,6 @@ public class AppListEntry extends AbstractListEntry implements Comparable<AppLis
 	}
 
 	@Override
-	public String getTextToSay() {
-		return null;
-	}
-
-	@Override
 	public void onSelected() {
 		final Intent i = mCtx.getPackageManager().getLaunchIntentForPackage(
 				mInfo.activityInfo.packageName);

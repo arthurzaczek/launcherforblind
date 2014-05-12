@@ -28,9 +28,4 @@ public class NavigatorListEntry extends AbstractListEntry {
 			Log.w(TAG, "Unable to navigate - no class provided");
 		}
 	}
-
-	@Override
-	public String getTextToSay() {
-		return null;
-	}
 }
