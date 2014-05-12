@@ -20,5 +20,6 @@
     <string name="main_help">Move your finger on the screen up or down to select an item. Double tab to select the current item.</string>
     <string name="phonebook_help">Move your finger on the screen up or down to select an item. Double tab to select the current item.</string>
     <string name="time_format">\'It is \'HH:mm\' o\'\'clock on \'MMMM\' \'dd</string>
+    <string name="nothing_found">Nothing found</string>
 
 </resources>

@@ -1,5 +1,6 @@
 package net.zaczek.launcherforblind.activitysupport;
 
+import net.zaczek.launcherforblind.R;
 import net.zaczek.launcherforblind.listentries.ListEntry;
 import android.database.Cursor;
 import android.util.Log;
@@ -26,6 +27,13 @@ public abstract class AbstractCursorActivity extends AbstractActivity {
 		mCursor = getCursor();
 		if (mCursor != null && mCursor.moveToFirst()) {
 			select();
+		} else {
+			Log.i(TAG, "Nothing found");
+
+			String txt = getString(R.string.nothing_found);
+			vibe();
+			giveFeedback(txt);
+			say(txt);
 		}
 	}
 
