@@ -1,7 +1,5 @@
 package net.zaczek.launcherforblind;
 
-import java.util.Date;
-
 import net.zaczek.launcherforblind.activitysupport.AbstractCursorActivity;
 import net.zaczek.launcherforblind.listentries.ListEntry;
 import net.zaczek.launcherforblind.listentries.MissedCallListEntry;
