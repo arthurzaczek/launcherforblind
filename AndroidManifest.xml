@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_SMS"/>
 
     <application
         android:name="net.zaczek.launcherforblind.MyApplication"
@@ -39,6 +40,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".AppsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SMSActivity"
             android:screenOrientation="portrait" />
         </application>
 

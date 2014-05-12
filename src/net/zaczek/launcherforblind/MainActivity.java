@@ -33,9 +33,10 @@ public class MainActivity extends AbstractArrayActivity {
 						DialerActivity.class),
 				new NavigatorListEntry(getString(R.string.missedcalls), this,
 						MissedCallsActivity.class),
+				new NavigatorListEntry(getString(R.string.sms), this,
+						SMSActivity.class),
 				new NavigatorListEntry(getString(R.string.apps), this,
 						AppsActivity.class),
-				// new NavigatorListEntry(getString(R.string.sms), this, null),
 				new TimeListEntry(getString(R.string.currenttime),
 						getString(R.string.time_format)), };
 	}
