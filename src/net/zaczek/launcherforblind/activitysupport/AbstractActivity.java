@@ -157,7 +157,7 @@ public abstract class AbstractActivity extends Activity implements
 	public boolean onTouchEvent(MotionEvent event) {
 		this.mDetector.onTouchEvent(event);
 
-		int action = event.getActionMasked();
+		int action = event.getAction();
 		switch (action) {
 		case MotionEvent.ACTION_DOWN:
 			scrollSaveX = event.getX();
