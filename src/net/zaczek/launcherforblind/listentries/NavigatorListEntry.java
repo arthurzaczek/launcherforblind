@@ -1,5 +1,6 @@
 package net.zaczek.launcherforblind.listentries;
 
+import net.zaczek.launcherforblind.MyApplication;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -9,21 +10,22 @@ public class NavigatorListEntry extends AbstractListEntry {
 
 	@SuppressWarnings("rawtypes")
 	private Class mActivityClass;
-	private Context mCtx;
 
 	@SuppressWarnings("rawtypes")
-	public NavigatorListEntry(String label, Context ctx, Class activityClass) {
+	public NavigatorListEntry(String label, Class activityClass) {
 		super(label);
 
-		mCtx = ctx;
 		mActivityClass = activityClass;
 	}
 
 	@Override
 	public void onSelected() {
 		if (mActivityClass != null) {
+			final Context ctx = MyApplication.getAppContext();
 			Log.i(TAG, "Starting activity " + mActivityClass);
-			mCtx.startActivity(new Intent(mCtx, mActivityClass));
+			Intent i = new Intent(ctx, mActivityClass);
+			i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			ctx.startActivity(i);
 		} else {
 			Log.w(TAG, "Unable to navigate - no class provided");
 		}

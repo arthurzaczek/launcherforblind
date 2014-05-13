@@ -25,27 +25,32 @@ public class Helper {
 		}
 	}
 
-	/* 
-	 * Returns the contact name to a given number or returns the number if no name was found
+	/*
+	 * Returns the contact name to a given number or returns the number if no
+	 * name was found
 	 */
 	public static String getContactName(Context ctx, String phoneNumber) {
-		ContentResolver cr = ctx.getContentResolver();
-		Uri uri = Uri.withAppendedPath(PhoneLookup.CONTENT_FILTER_URI,
+		final ContentResolver cr = ctx.getContentResolver();
+		final Uri uri = Uri.withAppendedPath(PhoneLookup.CONTENT_FILTER_URI,
 				Uri.encode(phoneNumber));
-		Cursor cursor = cr.query(uri,
-				new String[] { PhoneLookup.DISPLAY_NAME }, null, null, null);
-		if (cursor == null) {
-			return null;
-		}
+		Cursor cursor = null;
 		String contactName = phoneNumber;
-		if (cursor.moveToFirst()) {
-			contactName = cursor.getString(cursor
-					.getColumnIndex(PhoneLookup.DISPLAY_NAME));
-		}
-		if (cursor != null && !cursor.isClosed()) {
-			cursor.close();
+		try {
+			cursor = cr.query(uri, new String[] { PhoneLookup.DISPLAY_NAME },
+					null, null, null);
+			if (cursor == null) {
+				return null;
+			}
+
+			if (cursor.moveToFirst()) {
+				contactName = cursor.getString(cursor
+						.getColumnIndex(PhoneLookup.DISPLAY_NAME));
+			}
+		} finally {
+			if (cursor != null && !cursor.isClosed()) {
+				cursor.close();
+			}
 		}
 		return contactName;
 	}
-
 }

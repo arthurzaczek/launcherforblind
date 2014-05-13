@@ -27,15 +27,15 @@ public class MainActivity extends AbstractArrayActivity {
 	protected ListEntry[] getList() {
 		return new ListEntry[] {
 				new StaticListEntry("Start Schirm"),
-				new NavigatorListEntry(getString(R.string.phonebook), this,
+				new NavigatorListEntry(getString(R.string.phonebook),
 						PhoneBookActivity.class),
-				new NavigatorListEntry(getString(R.string.dialer), this,
+				new NavigatorListEntry(getString(R.string.dialer),
 						DialerActivity.class),
-				new NavigatorListEntry(getString(R.string.missedcalls), this,
+				new NavigatorListEntry(getString(R.string.missedcalls),
 						MissedCallsActivity.class),
-				new NavigatorListEntry(getString(R.string.sms), this,
+				new NavigatorListEntry(getString(R.string.sms),
 						SMSActivity.class),
-				new NavigatorListEntry(getString(R.string.apps), this,
+				new NavigatorListEntry(getString(R.string.apps),
 						AppsActivity.class),
 				new TimeListEntry(getString(R.string.currenttime),
 						getString(R.string.time_format)), };

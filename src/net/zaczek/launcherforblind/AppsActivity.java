@@ -45,7 +45,7 @@ public class AppsActivity extends AbstractArrayActivity {
 				if (TextUtils.isEmpty(lb)) {
 					lb = info.activityInfo.name.toString();
 				}
-				result.add(new AppListEntry(lb, this, info));
+				result.add(new AppListEntry(lb, info));
 			}
 		}
 

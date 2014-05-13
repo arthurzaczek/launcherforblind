@@ -13,9 +13,11 @@ import android.widget.TextView;
 public class SMSActivity extends AbstractCursorActivity {
 	private static final String TAG = "launcherforblind";
 
-	private static final String[] PROJECTION = new String[] { "address", "date", "body" };
+	private static final String[] PROJECTION = new String[] { "address",
+			"date", "body" };
 
 	private TextView txtMain;
+	private boolean confirmed = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -38,11 +40,28 @@ public class SMSActivity extends AbstractCursorActivity {
 		long date = c.getLong(1);
 		String strDate = DateUtils.formatDateTime(this, date,
 				DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_TIME);
-		return new SMSListEntry(this, c.getString(0), strDate, c.getString(2));
+		return new SMSListEntry(c.getString(0), strDate, c.getString(2));
 	}
 
 	@Override
 	protected void giveFeedback(String label) {
 		txtMain.setText(label);
+		confirmed = false;
+	}
+
+	@Override
+	protected void onExecute() {
+		super.onExecute();
+		final SMSListEntry current = (SMSListEntry) getCurrentListEntry();
+		if (current == null)
+			return;
+
+		if (!confirmed) {
+			Helper.confirmDial(this, current.getLabel());
+			confirmed = true;
+		} else {
+			// actually dial
+			Helper.dial(this, current.getNumber());
+		}
 	}
 }
