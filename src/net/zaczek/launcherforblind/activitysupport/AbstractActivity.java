@@ -87,6 +87,10 @@ public abstract class AbstractActivity extends Activity implements
 		}
 	}
 	
+	protected boolean announceHelp() {
+		return false;
+	}
+	
 	protected void onTTSCompleted() {		
 		
 	}

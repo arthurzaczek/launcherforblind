@@ -26,7 +26,7 @@ public class MainActivity extends AbstractArrayActivity {
 	@Override
 	protected ListEntry[] getList() {
 		return new ListEntry[] {
-				new StaticListEntry("Start Schirm"),
+				new StaticListEntry(getString(R.string.main_screen)),
 				new NavigatorListEntry(getString(R.string.phonebook),
 						PhoneBookActivity.class),
 				new NavigatorListEntry(getString(R.string.dialer),
@@ -44,5 +44,11 @@ public class MainActivity extends AbstractArrayActivity {
 	@Override
 	protected void giveFeedback(String label) {
 		txtMain.setText(label);
+	}
+	
+	@Override
+	protected boolean announceHelp() {
+		say(getString(R.string.main_help));
+		return true;
 	}
 }

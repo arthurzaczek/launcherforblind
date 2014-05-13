@@ -31,11 +31,17 @@ public abstract class AbstractArrayActivity extends AbstractActivity {
 		mList = getList();
 		if (mList != null && mList.length > 0) {
 			mIndex = 0;
-			select();
+			if (!announceHelp()) {
+				select();
+			} else {
+				final String label = mList[mIndex].getLabel();
+				Log.i(TAG, "Selecting " + label);
+				giveFeedback(label);
+			}
 		} else {
 			mIndex = -1;
 		}
-	}
+	}	
 
 	private void select() {
 		final ListEntry entry = mList[mIndex];

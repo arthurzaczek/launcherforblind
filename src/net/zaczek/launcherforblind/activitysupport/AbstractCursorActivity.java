@@ -26,7 +26,13 @@ public abstract class AbstractCursorActivity extends AbstractActivity {
 
 		mCursor = getCursor();
 		if (mCursor != null && mCursor.moveToFirst()) {
-			select();
+			if (!announceHelp()) {
+				select();
+			} else {
+				final String label = getListEntry(mCursor).getLabel();
+				Log.i(TAG, "Selecting " + label);
+				giveFeedback(label);
+			}
 		} else {
 			Log.i(TAG, "Nothing found");
 

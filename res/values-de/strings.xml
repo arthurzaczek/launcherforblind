@@ -1,6 +1,7 @@
 <resources>
 
     <string name="app_name">Start Schirm für Blinde Menschen</string>
+    <string name="main_screen">Start Schirm</string>
     <string name="phonebook">Telefon Buch</string>
     <string name="dialer">Wählscheibe</string>
     <string name="missedcalls">Verpasste Anrufe</string>
