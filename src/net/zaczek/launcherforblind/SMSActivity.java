@@ -57,7 +57,7 @@ public class SMSActivity extends AbstractCursorActivity {
 			return;
 
 		if (!confirmed) {
-			Helper.confirmDial(this, current.getLabel());
+			Helper.confirmDial(this, current.getName());
 			confirmed = true;
 		} else {
 			// actually dial

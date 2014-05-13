@@ -15,10 +15,13 @@ public class SMSListEntry extends AbstractListEntry {
 		mMessage = msg;
 	}
 
+	public String getName() {
+		return Helper.getContactName(MyApplication.getAppContext(), mNumber);
+	}
+
 	@Override
 	public String getLabelToSay() {
-		return Helper.getContactName(MyApplication.getAppContext(), mNumber)
-				+ ", " + mDate + ".\n" + mMessage;
+		return getName() + ", " + mDate + ".\n" + mMessage;
 	}
 
 	public String getNumber() {
