@@ -50,6 +50,8 @@ public abstract class AbstractActivity extends Activity implements
 				onTTSCompleted();
 			}			
 		});
+		
+		announceHelp();
 	}
 
 	@Override

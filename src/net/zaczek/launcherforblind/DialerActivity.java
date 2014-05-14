@@ -52,6 +52,16 @@ public class DialerActivity extends AbstractActivity {
 		txtCurrentDigit = (TextView) findViewById(R.id.txtCurrentDigit);
 		txtCurrentDigit.setText(R.string.digit_help);
 	}
+	
+	@Override
+	protected boolean announceHelp() {
+		if (Settings.announceDialerHelp()) {
+			say(getString(R.string.digit_help));
+			Settings.updateAnnounceDialerHelp();
+			return true;
+		}
+		return false;
+	}
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {

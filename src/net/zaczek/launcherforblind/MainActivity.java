@@ -45,10 +45,14 @@ public class MainActivity extends AbstractArrayActivity {
 	protected void giveFeedback(String label) {
 		txtMain.setText(label);
 	}
-	
+
 	@Override
 	protected boolean announceHelp() {
-		say(getString(R.string.main_help));
-		return true;
+		if (Settings.announceMainHelp()) {
+			say(getString(R.string.main_help));
+			Settings.updateAnnounceMainHelp();
+			return true;
+		}
+		return false;
 	}
 }

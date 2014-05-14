@@ -20,7 +20,8 @@ public class Settings {
 
 	public synchronized static void updateAnnounceMainHelp() {
 		load();
-		sharedPref.edit().putBoolean("announceMainHelp", true).commit();
+		sharedPref.edit().putBoolean("announceMainHelp", false).commit();
+		sharedPref = null;
 	}
 	
 	public static boolean announceDialerHelp() {
@@ -30,6 +31,6 @@ public class Settings {
 
 	public synchronized static void updateAnnounceDialerHelp() {
 		load();
-		sharedPref.edit().putBoolean("announceDialerHelp", true).commit();
+		sharedPref.edit().putBoolean("announceDialerHelp", false).commit();
 	}
 }
