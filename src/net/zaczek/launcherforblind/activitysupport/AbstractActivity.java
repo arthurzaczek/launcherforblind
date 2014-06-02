@@ -51,9 +51,9 @@ public abstract class AbstractActivity extends Activity implements
 			@Override
 			public void onUtteranceCompleted(String utteranceId) {
 				onTTSCompleted();
-			}			
+			}
 		});
-		
+
 		announceHelp();
 	}
 
@@ -91,21 +91,21 @@ public abstract class AbstractActivity extends Activity implements
 			cachedSaying = something;
 		}
 	}
-	
+
 	protected boolean announceHelp() {
 		return false;
 	}
-	
-	protected void onTTSCompleted() {		
-		
+
+	protected void onTTSCompleted() {
+
 	}
 
 	protected void vibe() {
 		mVibe.vibrate(PATTERN, -1);
 	}
-	
+
 	protected void onExecute() {
-		
+
 	}
 
 	@Override
@@ -115,7 +115,7 @@ public abstract class AbstractActivity extends Activity implements
 			ttsInitialized = true;
 			say(cachedSaying);
 		} else {
-			Log.e(TAG, "Initilization Failed");
+			Log.e(TAG, "Initilization failed");
 		}
 	}
 
@@ -162,17 +162,17 @@ public abstract class AbstractActivity extends Activity implements
 	protected void onLongPress() {
 		Log.d(TAG, "onLongPress");
 	}
-	
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_ENTER:
-        case KeyEvent.KEYCODE_CALL:
-            onExecute();
-            return true;
-        case KeyEvent.KEYCODE_ENDCALL:
-        	startActivity(new Intent(this, MainActivity.class));
-        	return true;
+		case KeyEvent.KEYCODE_CALL:
+			onExecute();
+			return true;
+		case KeyEvent.KEYCODE_ENDCALL:
+			startActivity(new Intent(this, MainActivity.class));
+			return true;
 		}
 		return super.onKeyDown(keyCode, event);
 	}
