@@ -52,7 +52,7 @@ public class DialerActivity extends AbstractActivity {
 		txtCurrentDigit = (TextView) findViewById(R.id.txtCurrentDigit);
 		txtCurrentDigit.setText(R.string.digit_help);
 	}
-	
+
 	@Override
 	protected boolean announceHelp() {
 		if (Settings.announceDialerHelp()) {
@@ -61,6 +61,12 @@ public class DialerActivity extends AbstractActivity {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	protected void onExecute() {
+		super.onExecute();
+		callCurrentNumber();
 	}
 
 	@Override
@@ -168,7 +174,7 @@ public class DialerActivity extends AbstractActivity {
 				// length.
 				say(getString(R.string.invalid_number));
 			} else {
-				StringBuilder sb = new StringBuilder();				
+				StringBuilder sb = new StringBuilder();
 				for (int i = 0; i < dialedNumber.length(); i++) {
 					sb.append(dialedNumber.charAt(i) + " ");
 				}
@@ -177,7 +183,7 @@ public class DialerActivity extends AbstractActivity {
 			}
 		} else {
 			// actually dial
-			Helper.dial(this, dialedNumber);			
+			Helper.dial(this, dialedNumber);
 		}
 	}
 }
