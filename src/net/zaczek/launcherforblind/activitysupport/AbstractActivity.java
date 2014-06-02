@@ -2,8 +2,10 @@ package net.zaczek.launcherforblind.activitysupport;
 
 import java.util.HashMap;
 
+import net.zaczek.launcherforblind.MainActivity;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.speech.tts.TextToSpeech;
@@ -13,6 +15,7 @@ import android.support.v4.view.GestureDetectorCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 
 /* 
@@ -100,6 +103,10 @@ public abstract class AbstractActivity extends Activity implements
 	protected void vibe() {
 		mVibe.vibrate(PATTERN, -1);
 	}
+	
+	protected void onExecute() {
+		
+	}
 
 	@Override
 	public void onInit(int status) {
@@ -154,6 +161,20 @@ public abstract class AbstractActivity extends Activity implements
 
 	protected void onLongPress() {
 		Log.d(TAG, "onLongPress");
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		switch (keyCode) {
+		case KeyEvent.KEYCODE_ENTER:
+        case KeyEvent.KEYCODE_CALL:
+            onExecute();
+            return true;
+        case KeyEvent.KEYCODE_ENDCALL:
+        	startActivity(new Intent(this, MainActivity.class));
+        	return true;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 
 	private float scrollSaveX = Float.NaN;

@@ -58,6 +58,7 @@ public abstract class AbstractCursorActivity extends AbstractActivity {
 		say(mCurrent.getLabelToSay());
 	}
 
+	@Override
 	protected void onExecute() {
 		if (mCurrent != null) {
 			say(mCurrent.getTextToSay());

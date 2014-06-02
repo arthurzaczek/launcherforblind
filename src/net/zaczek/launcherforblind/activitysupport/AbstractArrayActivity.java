@@ -53,6 +53,7 @@ public abstract class AbstractArrayActivity extends AbstractActivity {
 		say(entry.getLabelToSay());
 	}
 
+	@Override
 	protected void onExecute() {
 		final ListEntry entry = mList[mIndex];
 		say(entry.getTextToSay());
