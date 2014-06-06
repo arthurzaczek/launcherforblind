@@ -1,6 +1,7 @@
 package net.zaczek.launcherforblind;
 
 import net.zaczek.launcherforblind.activitysupport.AbstractArrayActivity;
+import net.zaczek.launcherforblind.listentries.BatteryListEntry;
 import net.zaczek.launcherforblind.listentries.ListEntry;
 import net.zaczek.launcherforblind.listentries.NavigatorListEntry;
 import net.zaczek.launcherforblind.listentries.StaticListEntry;
@@ -38,7 +39,8 @@ public class MainActivity extends AbstractArrayActivity {
 				new NavigatorListEntry(getString(R.string.apps),
 						AppsActivity.class),
 				new TimeListEntry(getString(R.string.currenttime),
-						getString(R.string.time_format)), };
+						getString(R.string.time_format)),
+				new BatteryListEntry(getString(R.string.battery_level)), };
 	}
 
 	@Override

@@ -23,5 +23,7 @@
     <string name="time_format">\'Es ist \'HH\' Uhr \'mm\' am \'dd\' \'MMMM</string>
     <string name="nothing_found">Nichts gefunden</string>
     <string name="please_unlock">Bitte entsperren</string>
+    <string name="charging">wird geladen</string>
+    <string name="battery_level">Ladezustand</string>
     
 </resources>

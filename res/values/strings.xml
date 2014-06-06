@@ -22,7 +22,7 @@
     <string name="phonebook_help">Move your finger on the screen up or down to select an item. Double tab to select the current item.</string>
     <string name="time_format">\'It is \'HH:mm\' o\'\'clock on \'MMMM\' \'dd</string>
     <string name="nothing_found">Nothing found</string>
-    <string name="please_unlock">please unlock</string>
+    <string name="please_unlock">please unlock</string>    
     <string name="crash_toast_text">Ooooops ! I crashed, but a report has been sent to my developer to help fix the issue !</string>
     <string name="crash_notif_ticker_text">Unexpected error, please send a report.</string>
     <string name="crash_notif_title">Launcher for Blind People has crashed.</string>
@@ -33,5 +33,7 @@
 		all you have to do is click OK.</string>
     <string name="crash_dialog_comment_prompt">You might add your comments about the problem below:</string>
     <string name="crash_dialog_ok_toast">Thank you !</string>
+    <string name="charging">charging</string>
+    <string name="battery_level">battery level</string>
 
 </resources>
